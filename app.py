@@ -61,7 +61,7 @@ def branch():
             vc_plot = df.groupby(primary_col)[selected_columns_names].sum()
         else:
             vc_plot = df.iloc[:,-1].value_counts()
-        st.write(vc_plot.plot(kind=type_of_plot))
+        st.write(vc_plot.plot(kind='bar'))
         st.pyplot()
     #cust_plot= df['Payment'].value_counts().plot(kind='bar')
     #st.write(cust_plot)
