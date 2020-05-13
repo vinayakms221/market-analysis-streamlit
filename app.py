@@ -17,9 +17,11 @@ DATA_URL = ("https://github.com/vinayakms221/market-analysis-streamlit/blob/mast
 def main():
     st.title("MARKET DATA ANALYSIS")
     st.sidebar.title("Analysis type")
-    app_mode = st.sidebar.selectbox("Choose the analysis type",["Data Analysis", "Geographical Analysis"])
+    app_mode = st.sidebar.selectbox("Choose the analysis type",["-Select-","Data Analysis", "Geographical Analysis"])
     if app_mode=="Data Analysis":
         data()
+    elif app_mode=="-Select-":
+        sample()
     else:
         graph()
 
@@ -27,12 +29,16 @@ def main():
 def get_data():
     metadata=pd.read_csv("./datasets/supermarket_sales.csv")
     return metadata
+def sample():
+    st.title("MARKET DATA ANALYSIS")
 
 def data():
     #st.sidebar.header("choose analysis")
-    unit=st.sidebar.selectbox("",["Whole unit","Branch wise"])
+    unit=st.sidebar.selectbox("",["-Select-","Whole unit","Branch wise"])
     if unit=="Whole unit":
         fulldata()
+    elif unit=="-Select-":
+        sample()
     else:
         branch()
 
@@ -45,13 +51,15 @@ def fulldata():
 
 def branch():
     #st.sidebar.header("choose branch")
-    unit=st.sidebar.selectbox("choose branch",["Branch A","Branch B","Branch C"])
+    unit=st.sidebar.selectbox("choose branch",["-Select-","Branch A","Branch B","Branch C"])
     if unit=="Branch A":
         df=dataA()
     elif unit=="Branch B":
         df=dataB()
-    else:
+    elseif unit=="Branch C":
         df=dataC()
+    else:
+        sample()
     
     primary_col = st.selectbox("Primary Columm to GroupBy",['Product line'])
     selected_columns_names = st.multiselect("Select Columns",['gross income','Quantity'])
