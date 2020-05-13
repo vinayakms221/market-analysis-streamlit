@@ -56,7 +56,7 @@ def branch():
         df=dataA()
     elif unit=="Branch B":
         df=dataB()
-    elseif unit=="Branch C":
+    elif unit=="Branch C":
         df=dataC()
     else:
         sample()
