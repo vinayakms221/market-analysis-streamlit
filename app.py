@@ -25,7 +25,7 @@ def main():
 
 @st.cache
 def get_data():
-    metadata=pd.read_csv("./dataset/supermarket_sales.csv")
+    metadata=pd.read_csv("./datasets/supermarket_sales.csv")
     return metadata
 
 def data():
