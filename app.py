@@ -31,6 +31,68 @@ def get_data():
     metadata=pd.read_csv("./datasets/supermarket_sales.csv")
     return metadata
 
+@st.cache
+def map_data():
+    metadata=pd.read_csv("http://s3-us-west-2.amazonaws.com/streamlit-demo-data/uber-raw-data-sep14.csv.gz",nrows=2000)
+    return metadata
+
+def graph():
+    df=map_data()
+    st.header("Graphical Analysis")
+    st.header("")
+    st.subheader("The map plots the location from where the manufacturer gets requests for products, the height represents the frequency of requests")
+    midpoint = (np.average(df["Lat"]), np.average(df["Lon"]))
+    maptype=st.selectbox('select type of graph layer',["ScatterplotLayer","HexagonLayer"])
+    if maptype=="ScatterplotLayer":
+        st.write(pdk.Deck(
+            map_style="mapbox://styles/mapbox/light-v9",
+            initial_view_state={
+                "latitude": midpoint[0],
+                "longitude": midpoint[1],
+                "zoom": 10.5,
+                "pitch": 50,
+            },
+            layers=[
+                pdk.Layer(
+                    "ScatterplotLayer",
+                    data=df,
+                    get_position=["Lon", "Lat"],
+                    #radius=100,
+                    elevation_scale=4,
+                    get_fill_color=[255, 0, 0, 100],
+                    get_radius=100,
+                    elevation_range=[0, 1000],
+                    pickable=True,
+                    extruded=True,
+                ),
+            ],
+        ))
+    else:
+        st.write(pdk.Deck(
+            map_style="mapbox://styles/mapbox/light-v9",
+            initial_view_state={
+                "latitude": midpoint[0],
+                "longitude": midpoint[1],
+                "zoom": 10.5,
+                "pitch": 50,
+            },
+            layers=[
+                pdk.Layer(
+                    "HexagonLayer",
+                    data=df,
+                    get_position=["Lon", "Lat"],
+                    radius=100,
+                    elevation_scale=4,
+                    get_fill_color=[255, 0, 0, 100],
+                    get_radius=100,
+                    elevation_range=[0, 1000],
+                    pickable=True,
+                    extruded=True,
+                ),
+            ],
+        ))
+
+
 def data():
     #st.sidebar.header("choose analysis")
     unit=st.sidebar.selectbox("",["Whole unit","Branch wise"])
