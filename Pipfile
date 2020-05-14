@@ -10,6 +10,7 @@ pandas = "*"
 streamlit = "*"
 seaborn = "*"
 matplotlib = "*"
+pydeck = "*"
 
 [requires]
 python_version = "3.6"
