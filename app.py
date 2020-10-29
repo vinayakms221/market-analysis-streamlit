@@ -140,8 +140,13 @@ def fulldata():
         else:
             html_temp="""<div style="align:centre"><p style="color: red; font-size: 20px">*select any from above</p></div>"""
             st.markdown(html_temp,unsafe_allow_html=True)
-
-
+            
+    else:
+        st.subheader("Veg vs Non-Veg")
+        cust_plot= df['veg-non'].value_counts().plot(kind='pie')
+        if st.button("Plot"):
+            st.write(cust_plot)
+            st.pyplot()
 
 @st.cache
 def dataA():
