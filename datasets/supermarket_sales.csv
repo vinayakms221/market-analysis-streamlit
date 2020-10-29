@@ -1,4 +1,4 @@
-Invoice ID,Branch,City,Customer type,veg-non,Product line,Unit price,Quantity,Tax 5%,Total,Date,Time,Payment,cogs,gross margin percentage,gross income,Rating
+Invoice ID,Branch,City,Customer type,Vn,Product line,Unit price,Quantity,Tax 5%,Total,Date,Time,Payment,cogs,gross margin percentage,gross income,Rating
 750-67-8428,A,Yangon,Member,Non-veg,Indian,74.69,7,26.1415,548.9715,1/5/2019,13:08,Ewallet,522.83,4.761904762,26.1415,9.1
 226-31-3081,C,Naypyitaw,Normal,Non-veg,Chinese,15.28,5,3.82,80.22,3/8/2019,10:29,Cash,76.4,4.761904762,3.82,9.6
 631-41-3108,A,Yangon,Normal,Non-veg,Italian,46.33,7,16.2155,340.5255,3/3/2019,13:23,Credit card,324.31,4.761904762,16.2155,7.4
