@@ -123,7 +123,23 @@ def fulldata():
             st.write(cust_plot)
             st.pyplot()
 
-
+    elif analysis=="Cuisine Type Analysis":
+        ptype=st.multiselect("Select Product Type",['Chinese','Continental','Arabic','Indian','Italian','French'])
+        l= len(ptype)
+        f=df['Invoice ID'].copy()
+        if l!=0:
+            #dd=dd.drop("Invoice ID",axis=1)
+            for i in range(l):
+                d=df[df['Product line'] ==ptype[i]]
+                dd=pd.concat([f,d],axis=0)
+                f=dd.copy()
+            abc=dd.groupby('Product line')['gross income'].sum()
+            if st.button("Plot"):
+                st.write(abc.plot(kind='pie'))
+                st.pyplot()
+        else:
+            html_temp="""<div style="align:centre"><p style="color: red; font-size: 20px">*select any from above</p></div>"""
+            st.markdown(html_temp,unsafe_allow_html=True)
 
 
 
