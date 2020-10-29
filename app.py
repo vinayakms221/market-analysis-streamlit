@@ -143,7 +143,7 @@ def fulldata():
             
     else:
         st.subheader("Veg vs Non-Veg")
-        cust_plot= df['veg-non'].value_counts().plot(kind='pie')
+        cust_plot= df['Vn'].value_counts().plot(kind='pie')
         if st.button("Plot"):
             st.write(cust_plot)
             st.pyplot()
